@@ -1,6 +1,4 @@
 - hosts: all
-  vars_files:
-    - 'vars/main.yml'
   vars:
     - ruby_mversion: 2.0
     - ruby_fversion: 2.0.0-p247
