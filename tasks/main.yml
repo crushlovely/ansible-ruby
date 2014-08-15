@@ -36,8 +36,3 @@
   shell: gem install bundler
   sudo: yes
   when: result|failed
-
-- name: Ruby | Install Unicorn
-  shell: gem install unicorn
-  sudo: yes
-  when: result|failed
