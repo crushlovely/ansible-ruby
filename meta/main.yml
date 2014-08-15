@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: Pablo Castillo
+  company: Crush & Lovely
+  description: Ruby for Ubuntu 12.04LTS
+  license: MIT
+  min_ansible_version: 1.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - precise
+  categories:
+    - development
+    - web
+    - system
+dependencies: []
