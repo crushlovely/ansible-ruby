@@ -17,8 +17,8 @@ $ ansible-galaxy install crushlovely.ruby
 
 ``` yaml
 ruby_mversion: 2.0
-ruby_fversion: 2.0.0-p247
-ruby_cversion: 2.0.0p247
+ruby_fversion: 2.0.0-p576
+ruby_cversion: 2.0.0p576
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ Once this role is installed on your system, include it in the roles list of your
 ---
 - hosts: localhost
   roles:
-    - { role: crushlovely.ruby, ruby_mversion: 2.0, ruby_fversion: 2.0.0-p247, ruby_cversion: 2.0.0p247 }
+    - { role: crushlovely.ruby, ruby_mversion: 2.0, ruby_fversion: 2.0.0-p576, ruby_cversion: 2.0.0p576 }
 ```
 
 ## Dependencies
