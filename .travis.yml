@@ -10,4 +10,4 @@ script:
   - echo localhost > inventory
   - ansible-galaxy install crushlovely.deploy-user --roles-path=/home/travis/build/crushlovely/ansible-ruby/
   - ansible-playbook --syntax-check -i inventory test.yml
-  - travis_wait ansible-playbook -i inventory test.yml --connection=local --sudo -v --fork=500
+  - travis_wait ansible-playbook -i inventory test.yml --connection=local --sudo --forks=500
