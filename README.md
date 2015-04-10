@@ -1,24 +1,28 @@
 # Ansible Role For Ruby
 
-[![Build Status](http://img.shields.io/travis/crushlovely/ansible-ruby.svg?style=flat)](https://travis-ci.org/crushlovely/ansible-deploy-user)
+[![Build Status](https://img.shields.io/circleci/project/crushlovely/ansible-ruby.svg?style=flat)](https://github.com/crushlovely/ansible-ruby)
 [![Current Version](http://img.shields.io/github/release/crushlovely/ansible-ruby.svg?style=flat)](https://galaxy.ansible.com/list#/roles/1180)
 
-This Ansible role that installs `ruby` and `bundler`.
+This Ansible role installs `ruby` and `bundler`.
 
 We use this to install Ruby when required.
 
 ## Installation
 
 ``` bash
-$ ansible-galaxy install crushlovely.ruby
+$ ansible-galaxy install crushlovely.ruby,v2.0.0
 ```
 
 ## Variables
 
 ``` yaml
-ruby_mversion: 2.0
-ruby_fversion: 2.0.0-p576
-ruby_cversion: 2.0.0p576
+ruby
+  mversion: 2.0
+  fversion: 2.0.0-p576
+  cversion: 2.0.0p576
+app:
+  user: ubuntu
+  group: ubuntu
 ```
 
 ## Usage
@@ -29,13 +33,12 @@ Once this role is installed on your system, include it in the roles list of your
 ---
 - hosts: localhost
   roles:
-    - { role: crushlovely.ruby, ruby_mversion: 2.0, ruby_fversion: 2.0.0-p576, ruby_cversion: 2.0.0p576 }
+    - crushlovely.ruby
 ```
 
 ## Dependencies
 
-This role requires there to be a `deploy` user with sudo capabilities.  [Click here to view our users role](https://galaxy.ansible.com/list#/roles/1337)
-
+None
 
 ## License
 

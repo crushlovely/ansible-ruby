@@ -1,0 +1,8 @@
+---
+ruby:
+  mversion: 2.0
+  fversion: 2.0.0-p576
+  cversion: 2.0.0p576
+app:
+  user: ubuntu
+  group: ubuntu
