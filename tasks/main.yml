@@ -4,35 +4,35 @@
   register: result
   ignore_errors: yes
 
-- name: Ruby | Download Source
+- name: Download Source
   get_url: url=ftp://ftp.ruby-lang.org/pub/ruby/{{ ruby.mversion }}/ruby-{{ ruby.fversion }}.tar.gz dest=/tmp/
   when: result|failed
 
-- name: Ruby | Unzip
+- name: Unzip
   unarchive: src=/tmp/ruby-{{ ruby.fversion }}.tar.gz dest=/tmp copy=no group={{ app.group }} owner={{ app.user }}
   when: result|failed
 
-- name: Ruby | Take Ownership of Directory
+- name: Take Ownership of Directory
   file: path=/tmp/ruby-{{ ruby.fversion }} owner={{ app.user }} group={{ app.group }}
   sudo: yes
   when: result|failed
 
-- name: Ruby | Change Directory &  Configure
+- name: Change Directory &  Configure
   shell: ./configure chdir=/tmp/ruby-{{ ruby.fversion }}
   sudo: yes
   when: result|failed
 
-- name: Ruby | Make
+- name: Make
   shell: /usr/bin/make chdir=/tmp/ruby-{{ ruby.fversion }}
   sudo: yes
   when: result|failed
 
-- name: Ruby | Make Install
+- name: Make Install
   shell: /usr/bin/make install chdir=/tmp/ruby-{{ ruby.fversion }}/
   sudo: yes
   when: result|failed
 
-- name: Ruby | Install Bundler
-  gem: name=bundler state=present
+- name: Install Bundler
+  gem: name=bundler state=present user_install=no
   sudo: yes
   when: result|failed
