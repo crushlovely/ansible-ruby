@@ -1,34 +1,34 @@
 ---
 - name: Check if Ruby is installed
-  shell: /usr/bin/test `ruby -v | grep "ruby" | awk '{print $2}'` = {{ ruby.cversion }} && echo True
+  shell: /usr/bin/test `ruby -v | grep "ruby" | awk '{print $2}'` = {{ ruby_cversion }} && echo True
   register: result
   ignore_errors: yes
 
 - name: Download Source
-  get_url: url=ftp://ftp.ruby-lang.org/pub/ruby/{{ ruby.mversion }}/ruby-{{ ruby.fversion }}.tar.gz dest=/tmp/
+  get_url: url=ftp://ftp.ruby-lang.org/pub/ruby/{{ ruby_mversion }}/ruby-{{ ruby_fversion }}.tar.gz dest=/tmp/
   when: result|failed
 
 - name: Unzip
-  unarchive: src=/tmp/ruby-{{ ruby.fversion }}.tar.gz dest=/tmp copy=no group={{ app.group }} owner={{ app.user }}
+  unarchive: src=/tmp/ruby-{{ ruby_fversion }}.tar.gz dest=/tmp copy=no group={{ app_group }} owner={{ app_user }}
   when: result|failed
 
 - name: Take Ownership of Directory
-  file: path=/tmp/ruby-{{ ruby.fversion }} owner={{ app.user }} group={{ app.group }}
+  file: path=/tmp/ruby-{{ ruby_fversion }} owner={{ app_user }} group={{ app_group }}
   sudo: yes
   when: result|failed
 
 - name: Change Directory &  Configure
-  shell: ./configure chdir=/tmp/ruby-{{ ruby.fversion }}
+  shell: ./configure chdir=/tmp/ruby-{{ ruby_fversion }}
   sudo: yes
   when: result|failed
 
 - name: Make
-  shell: /usr/bin/make chdir=/tmp/ruby-{{ ruby.fversion }}
+  shell: /usr/bin/make chdir=/tmp/ruby-{{ ruby_fversion }}
   sudo: yes
   when: result|failed
 
 - name: Make Install
-  shell: /usr/bin/make install chdir=/tmp/ruby-{{ ruby.fversion }}/
+  shell: /usr/bin/make install chdir=/tmp/ruby-{{ ruby_fversion }}/
   sudo: yes
   when: result|failed
 
